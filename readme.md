@@ -1,0 +1,1 @@
+# code test giao tiếp lora truyền nhận giữa thiết bị truyền và thiết bị nhận , phiên bản code này chỉ là cơ bản được sử dụng cho mục đích nghiên cứu 
