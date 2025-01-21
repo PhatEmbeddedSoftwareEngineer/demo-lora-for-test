@@ -24,8 +24,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h \
- D:/develop\ lora/project\ NCKH\ UTH/demo-lora-for-test/Drivers/sx1278/sx1278.hpp \
- D:/develop\ lora/project\ NCKH\ UTH/demo-lora-for-test/Drivers/sx1278/SX1278_hw.hpp \
+ D:/develop\ lora/demo-lora-for-test/Drivers/sx1278/sx1278.hpp \
+ D:/develop\ lora/demo-lora-for-test/Drivers/sx1278/SX1278_hw.hpp \
  ../Core/Inc/gpio.h ../Core/Inc/main.h ../Core/Inc/spi.h \
  ../Core/Inc/i2c.h ../Core/Inc/mpu6050.h ../Core/Inc/i2c.h
 ../Core/Inc/main.h:
@@ -54,8 +54,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_spi.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_uart.h:
-D:/develop\ lora/project\ NCKH\ UTH/demo-lora-for-test/Drivers/sx1278/sx1278.hpp:
-D:/develop\ lora/project\ NCKH\ UTH/demo-lora-for-test/Drivers/sx1278/SX1278_hw.hpp:
+D:/develop\ lora/demo-lora-for-test/Drivers/sx1278/sx1278.hpp:
+D:/develop\ lora/demo-lora-for-test/Drivers/sx1278/SX1278_hw.hpp:
 ../Core/Inc/gpio.h:
 ../Core/Inc/main.h:
 ../Core/Inc/spi.h:

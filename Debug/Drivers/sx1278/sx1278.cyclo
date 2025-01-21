@@ -11,10 +11,10 @@
 ../Drivers/sx1278/sx1278.c:163:9:SX1278_LoRaRxPacket	3
 ../Drivers/sx1278/sx1278.c:186:5:SX1278_LoRaEntryTx	3
 ../Drivers/sx1278/sx1278.c:217:5:SX1278_LoRaTxPacket	3
-../Drivers/sx1278/sx1278.c:238:6:SX1278_init	1
-../Drivers/sx1278/sx1278.c:252:5:SX1278_transmit	2
-../Drivers/sx1278/sx1278.c:260:5:SX1278_receive	1
-../Drivers/sx1278/sx1278.c:264:9:SX1278_available	1
-../Drivers/sx1278/sx1278.c:268:9:SX1278_read	2
-../Drivers/sx1278/sx1278.c:277:9:SX1278_RSSI_LoRa	1
-../Drivers/sx1278/sx1278.c:284:9:SX1278_RSSI	1
+../Drivers/sx1278/sx1278.c:237:6:SX1278_init	1
+../Drivers/sx1278/sx1278.c:251:5:SX1278_transmit	2
+../Drivers/sx1278/sx1278.c:259:5:SX1278_receive	1
+../Drivers/sx1278/sx1278.c:263:9:SX1278_available	1
+../Drivers/sx1278/sx1278.c:267:9:SX1278_read	2
+../Drivers/sx1278/sx1278.c:276:9:SX1278_RSSI_LoRa	1
+../Drivers/sx1278/sx1278.c:283:9:SX1278_RSSI	1

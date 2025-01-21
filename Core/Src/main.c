@@ -33,8 +33,8 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define MODE_MASTER			1
-#define	MODE_SLAVE			0
+#define MODE_SEND			    0
+#define	MODE_RECEIVE			1
 
 
 
@@ -72,8 +72,7 @@ static void MX_I2C1_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-SX1278_hw_t SX1278_hw;
-SX1278_t SX1278;
+
 
 int master;
 int ret;
@@ -113,8 +112,6 @@ static void warning(double Gx,double Gy,double Gz)
 //
 //			count=0;
 //		}
-
-
 	}
 }
 
@@ -128,7 +125,8 @@ static void warning(double Gx,double Gy,double Gz)
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+  SX1278_hw_t SX1278_hw;
+  SX1278_t SX1278;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -155,10 +153,10 @@ int main(void)
   /* USER CODE BEGIN 2 */
   init_gpio();
   init_spi1();
-#if MODE_MASTER
+#if MODE_SEND
   printf("Mode: Master\r\n");
-#elif MODE_SLAVE
-  printf("Mode: Slave\r\n");
+#elif MODE_RECEIVE
+  printf("Mode: Receive\r\n");
 #endif
 
   //initialize LoRa module
@@ -177,16 +175,16 @@ int main(void)
 		  	  SX1278_LORA_BW_125KHZ, SX1278_LORA_CR_4_5, SX1278_LORA_CRC_EN, 10);
   printf("Done configuring LoRaModule\r\n");
 
-#if MODE_MASTER
-  ret = SX1278_LoRaEntryTx(&SX1278, 16, 2000);
-#elif MODE_SLAVE
+#if MODE_SEND
+  // ret = SX1278_LoRaEntryTx(&SX1278, 16, 2000);
+#elif MODE_RECEIVE
   ret = SX1278_LoRaEntryRx(&SX1278, 16, 2000);
 #endif
-  I2C_MspInit(&hi2c1);
-  I2C1_Init();
-  MPU6050_Soft_Reset();
-  MPU6050_t MPU6050;
-  while(MPU6050_Init(&hi2c1) == 1);
+  //I2C_MspInit(&hi2c1);
+  //I2C1_Init();
+  //MPU6050_Soft_Reset();
+  //MPU6050_t MPU6050;
+  //while(MPU6050_Init(&hi2c1) == 1);
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -194,25 +192,26 @@ int main(void)
   while (1)
   {
 	  //printf("hello world\n");HAL_Delay(500);
-	  MPU6050_Read_All(&hi2c1, &MPU6050);
-	  warning(MPU6050.Gx,MPU6050.Gy,MPU6050.Gz);
-#if	MODE_MASTER
-//	  printf("Master ...\r\n");
+	  //MPU6050_Read_All(&hi2c1, &MPU6050);
+	  //warning(MPU6050.Gx,MPU6050.Gy,MPU6050.Gz);
+    //printf("Ax= %.2f  Ay:= %.2f  Az:= %.2f  Gx:= %.2f  Gy:= %.2f  Gz:= %.2f  Temperature:= %.2f\n",MPU6050.Ax,MPU6050.Ay,MPU6050.Az,MPU6050.Gx,MPU6050.Gy,MPU6050.Gz,MPU6050.Temperature);
+    //HAL_Delay(100);
+#if	MODE_SEND
+	  //printf("Sending ...\r\n");
 //	  HAL_Delay(1000);
-//	  printf("Sending package...\r\n");
+	  printf("Sending package...\r\n");
 //
-//	  message_length = sprintf(buffer,"Ax= %.2f  Ay:= %.2f  Az:= %.2f  Gx:= %.2f  Gy:= %.2f  Gz:= %.2f  Temperature:= %.2f\n",MPU6050.Ax,MPU6050.Ay,MPU6050.Az,MPU6050.Gx,MPU6050.Gy,MPU6050.Gz,MPU6050.Temperature);
-//	  ret = SX1278_LoRaEntryTx(&SX1278, message_length, 2000);
-//	  printf("Entry: %d\r\n", ret);
+	  message_length = sprintf(buffer,"Ax= %.2f  Ay:= %.2f  Az:= %.2f  Gx:= %.2f  Gy:= %.2f  Gz:= %.2f  Temperature:= %.2f\n",MPU6050.Ax,MPU6050.Ay,MPU6050.Az,MPU6050.Gx,MPU6050.Gy,MPU6050.Gz,MPU6050.Temperature);
+	  ret = SX1278_LoRaEntryTx(&SX1278, message_length, 2000);
+	  printf("Entry: %d\r\n", ret);
 //
-//	  printf("Sending %s\r\n", buffer);
-//	  ret = SX1278_LoRaTxPacket(&SX1278, (uint8_t*) buffer,
-//			  	  	  	  	  	  message_length, 2000);
-//	  message += 1;
+	  printf("Sending %s\r\n", buffer);
+	  ret = SX1278_LoRaTxPacket(&SX1278, (uint8_t*) buffer,message_length, 2000);
+	  
 //
-//	  printf("Transmission: %d\r\n", ret);
+	  printf("Transmission: %d\r\n", ret);
 //	  printf("Package sent...\r\n");
-#elif MODE_SLAVE
+#elif MODE_RECEIVE
 	  printf("Slave ...\r\n");
 	  HAL_Delay(800);
 	  printf("Receiving package...\r\n");

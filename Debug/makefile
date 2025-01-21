@@ -64,8 +64,8 @@ all: main-build
 main-build: stm32_sx1278_never_give_up_send.elf secondary-outputs
 
 # Tool invocations
-stm32_sx1278_never_give_up_send.elf stm32_sx1278_never_give_up_send.map: $(OBJS) $(USER_OBJS) D:\develop\ lora\project\ NCKH\ UTH\demo-lora-for-test\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "stm32_sx1278_never_give_up_send.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\develop lora\project NCKH UTH\demo-lora-for-test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_sx1278_never_give_up_send.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+stm32_sx1278_never_give_up_send.elf stm32_sx1278_never_give_up_send.map: $(OBJS) $(USER_OBJS) D:\develop\ lora\demo-lora-for-test\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "stm32_sx1278_never_give_up_send.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\develop lora\demo-lora-for-test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="stm32_sx1278_never_give_up_send.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
